@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { Container } from '@material-ui/core';
 import './App.css';
+import FormularioCadastro from './Componentes/Formulario/Formulario';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="sm" component="article">
+      <h1>Formulario de cadastro!</h1>
+      <FormularioCadastro ehValido={validaCpf}></FormularioCadastro>
+    </Container>
   );
+
+  function validaCpf(cpf) {
+    if(cpf.length !== 11) {
+      return {valido:false, texto:"cpf deve ter 11 digitos"}
+    } else {
+      return {valido:true, texto:""}
+    }
+  }
 }
 
 export default App;
